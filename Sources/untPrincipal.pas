@@ -14,7 +14,7 @@ uses
   FireDAC.Comp.Client, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.Menus, GENERICS.COLLECTIONS,
   Vcl.Imaging.pngimage, JvExExtCtrls, JvSpecialImage, ACBrBase, ACBrPosPrinter, BaseLocalUsuariosController,
   baseLocalPedidoCabecalhoVO, baseLocalPedidoDetalheVO, baseLocalVendaCabecalhoController,
-  Vcl.Imaging.jpeg, REST.Types, dateUtils, ACBrSATExtratoClass,
+  Vcl.Imaging.jpeg, REST.Types, dateUtils, ACBrSATExtratoClass ,
   ACBrSATExtratoESCPOS, ACBrDFeReport, ACBrDFeDANFeReport, ACBrNFeDANFEClass,
   ACBrNFeDANFeESCPOS, ACBrSAT, ACBrSATExtratoReportClass, ACBrSATExtratoFortesFr,
   uIntegracaoBling;
