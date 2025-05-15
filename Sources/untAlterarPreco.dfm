@@ -19,7 +19,7 @@ object frmAlterarPreco: TfrmAlterarPreco
   PixelsPerInch = 96
   TextHeight = 13
   object SpeedButton1: TSpeedButton
-    Left = 16
+    Left = 10
     Top = 107
     Width = 184
     Height = 37
