@@ -2435,8 +2435,8 @@ object frmPrincipal: TfrmPrincipal
     EspacoFinal = 50
     LogoWidth = 100
     LogoHeigth = 70
-    Left = 96
-    Top = 232
+    Left = 112
+    Top = 280
   end
   object ACBrSATExtratoESCPOS2: TACBrSATExtratoESCPOS
     Sistema = 'G4SAT'
