@@ -200,7 +200,7 @@ begin
       query.SQL.Add('    c.troco, ');
       query.SQL.Add('    c.id_pedido, ');
       query.SQL.Add('    c.numero_pedido, ');
-      query.SQL.Add('    c.CHAVE_NFCE, c.numero_nfce, C.ID_MOVIMENTO ');
+      query.SQL.Add('    c.CHAVE_NFCE, c.numero_nfce, C.ID_MOVIMENTO, EXPORTADO_FINANCEIRO ');
       query.Open;
 
       if Not(query.IsEmpty) then Begin
