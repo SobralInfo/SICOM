@@ -56,7 +56,7 @@ implementation
 
 {$R *.dfm}
 
-uses untCadastroContas, untCadastroParametros;
+uses untCadastroContas, untCadastroParametros, untFiltrarLancFinanceiros;
 
 procedure TfrmPesquisarContasFinanceiras.Confirmar;
 begin
@@ -70,6 +70,12 @@ begin
       begin
          frmCadastroParametros.idConta := qryContasFinanceirasID.AsInteger;
          frmCadastroParametros.edtContaFinanceira.Text := trim(qryContasFinanceirasDESCRICAO.AsString);
+      end
+   else
+   if origem = 'LANC_FINANCEIRO' then
+      begin
+         frmFiltrarLancFinanceiros.idContaFinanceira := qryContasFinanceirasID.AsInteger;
+         frmFiltrarLancFinanceiros.edtContaFinanceira.Text := trim(qryContasFinanceirasDESCRICAO.AsString);
       end
    else
       begin

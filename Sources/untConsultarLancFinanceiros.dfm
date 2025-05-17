@@ -160,9 +160,9 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
     object GroupBox1: TGroupBox
       AlignWithMargins = True
       Left = 3
-      Top = 416
+      Top = 404
       Width = 991
-      Height = 194
+      Height = 206
       Margins.Right = 6
       Margins.Bottom = 6
       Align = alBottom
@@ -174,6 +174,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitTop = 405
       object Label1: TLabel
         Left = 8
         Top = 22
@@ -201,12 +202,12 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
         Font.Style = []
         ParentFont = False
       end
-      object Label5: TLabel
+      object lblTipoData: TLabel
         Left = 28
         Top = 69
-        Width = 62
+        Width = 83
         Height = 13
-        Caption = 'Vencimento: '
+        Caption = 'Data de Entrada:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = 4605510
         Font.Height = -11
@@ -217,7 +218,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       object lblFiltroClienteFornecedor: TLabel
         Left = 128
         Top = 46
-        Width = 157
+        Width = 178
         Height = 13
         AutoSize = False
         Caption = 'TODOS'
@@ -229,7 +230,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
         ParentFont = False
       end
       object lblFiltrosPeriodo: TLabel
-        Left = 91
+        Left = 116
         Top = 69
         Width = 168
         Height = 13
@@ -258,7 +259,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label14: TLabel
         Left = 356
-        Top = 113
+        Top = 135
         Width = 60
         Height = 13
         Caption = 'Status T'#237'tulo'
@@ -271,7 +272,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label15: TLabel
         Left = 419
-        Top = 114
+        Top = 136
         Width = 69
         Height = 13
         AutoSize = False
@@ -424,7 +425,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label11: TLabel
         Left = 356
-        Top = 135
+        Top = 157
         Width = 83
         Height = 13
         AutoSize = False
@@ -438,7 +439,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label17: TLabel
         Left = 440
-        Top = 136
+        Top = 158
         Width = 48
         Height = 13
         AutoSize = False
@@ -452,7 +453,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label22: TLabel
         Left = 356
-        Top = 157
+        Top = 179
         Width = 53
         Height = 13
         AutoSize = False
@@ -466,7 +467,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label24: TLabel
         Left = 410
-        Top = 157
+        Top = 179
         Width = 78
         Height = 13
         AutoSize = False
@@ -479,9 +480,9 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
         ParentFont = False
       end
       object lblStatus: TLabel
-        Left = 66
-        Top = 94
-        Width = 219
+        Left = 67
+        Top = 116
+        Width = 239
         Height = 13
         AutoSize = False
         Caption = 'TODOS'
@@ -494,7 +495,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label18: TLabel
         Left = 28
-        Top = 94
+        Top = 116
         Width = 35
         Height = 13
         Caption = 'Status:'
@@ -507,7 +508,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object DBText1: TDBText
         Left = 495
-        Top = 113
+        Top = 135
         Width = 125
         Height = 17
         Alignment = taRightJustify
@@ -522,7 +523,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object DBText2: TDBText
         Left = 495
-        Top = 135
+        Top = 157
         Width = 125
         Height = 17
         Alignment = taRightJustify
@@ -537,7 +538,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object DBText3: TDBText
         Left = 495
-        Top = 157
+        Top = 179
         Width = 125
         Height = 17
         Alignment = taRightJustify
@@ -594,7 +595,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object Label4: TLabel
         Left = 356
-        Top = 91
+        Top = 113
         Width = 35
         Height = 13
         Caption = 'Parcela'
@@ -606,9 +607,9 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
         ParentFont = False
       end
       object Label21: TLabel
-        Left = 396
-        Top = 92
-        Width = 92
+        Left = 422
+        Top = 114
+        Width = 66
         Height = 13
         AutoSize = False
         Caption = '.......................'
@@ -621,7 +622,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       end
       object DBText5: TDBText
         Left = 495
-        Top = 91
+        Top = 113
         Width = 125
         Height = 17
         Alignment = taRightJustify
@@ -676,18 +677,115 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label26: TLabel
+        Left = 28
+        Top = 94
+        Width = 85
+        Height = 13
+        Caption = 'Conta Financeira:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object lblConta: TLabel
+        Left = 118
+        Top = 94
+        Width = 190
+        Height = 13
+        AutoSize = False
+        Caption = 'TODAS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object lblTipo: TLabel
+        Left = 56
+        Top = 138
+        Width = 250
+        Height = 13
+        AutoSize = False
+        Caption = 'TODOS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label29: TLabel
+        Left = 28
+        Top = 138
+        Width = 24
+        Height = 13
+        Caption = 'Tipo:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 414
+        Top = 91
+        Width = 75
+        Height = 13
+        AutoSize = False
+        Caption = '..................................................'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label27: TLabel
+        Left = 355
+        Top = 91
+        Width = 53
+        Height = 13
+        AutoSize = False
+        Caption = 'Documento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object DBText7: TDBText
+        Left = 494
+        Top = 91
+        Width = 125
+        Height = 17
+        Alignment = taRightJustify
+        DataField = 'DESCRICAO_DOCUMENTO'
+        DataSource = dtsListagem
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 4605510
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
       object Panel4: TPanel
         Left = 316
         Top = 29
         Width = 1
-        Height = 127
+        Height = 163
         TabOrder = 0
       end
       object Panel7: TPanel
         Left = 648
         Top = 29
         Width = 1
-        Height = 127
+        Height = 163
         TabOrder = 1
       end
     end
@@ -696,7 +794,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
       Left = 6
       Top = 3
       Width = 988
-      Height = 410
+      Height = 398
       Margins.Left = 6
       Margins.Right = 6
       Margins.Bottom = 0
@@ -734,7 +832,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Name = 'Calibri'
           Font.Style = []
           Title.Caption = 'Cliente/Fornecedor'
-          Width = 277
+          Width = 229
           Visible = True
         end
         item
@@ -746,19 +844,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Name = 'Calibri'
           Font.Style = []
           Title.Caption = 'Conta Financeira'
-          Width = 160
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DESCRICAO_DOCUMENTO'
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Calibri'
-          Font.Style = []
-          Title.Caption = 'Documento'
-          Width = 113
+          Width = 150
           Visible = True
         end
         item
@@ -770,7 +856,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Name = 'Calibri'
           Font.Style = []
           Title.Caption = 'Status'
-          Width = 102
+          Width = 97
           Visible = True
         end
         item
@@ -784,7 +870,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Style = []
           Title.Alignment = taCenter
           Title.Caption = 'Data Entrada'
-          Width = 106
+          Width = 89
           Visible = True
         end
         item
@@ -798,7 +884,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Style = []
           Title.Alignment = taCenter
           Title.Caption = 'Data Vencimento'
-          Width = 102
+          Width = 95
           Visible = True
         end
         item
@@ -825,7 +911,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Style = []
           Title.Alignment = taCenter
           Title.Caption = 'Data Pagamento'
-          Width = 107
+          Width = 101
           Visible = True
         end
         item
@@ -837,6 +923,7 @@ object frmConsultarLancFinanceiros: TfrmConsultarLancFinanceiros
           Font.Name = 'Calibri'
           Font.Style = []
           Title.Caption = 'Valor Pago'
+          Width = 88
           Visible = True
         end>
     end

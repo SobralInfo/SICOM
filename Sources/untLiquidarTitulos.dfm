@@ -3,8 +3,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmLiquidarTitulos'
-  ClientHeight = 309
-  ClientWidth = 525
+  ClientHeight = 290
+  ClientWidth = 616
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,8 +18,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
   PixelsPerInch = 96
   TextHeight = 13
   object Image2: TImage
-    Left = 108
-    Top = 236
+    Left = 153
+    Top = 215
     Width = 289
     Height = 39
     Picture.Data = {
@@ -152,15 +152,15 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
       AE426082}
   end
   object Image3: TImage
-    Left = 115
-    Top = 242
+    Left = 160
+    Top = 221
     Width = 148
     Height = 31
     OnClick = Image3Click
   end
   object Image4: TImage
-    Left = 266
-    Top = 242
+    Left = 311
+    Top = 221
     Width = 131
     Height = 31
     Cursor = crHandPoint
@@ -180,8 +180,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 24
-    Top = 138
+    Left = 489
+    Top = 59
     Width = 97
     Height = 16
     Caption = 'Data Vencimento'
@@ -193,8 +193,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     ParentFont = False
   end
   object Label6: TLabel
-    Left = 185
-    Top = 138
+    Left = 181
+    Top = 130
     Width = 66
     Height = 16
     Caption = 'Valor T'#237'tulo'
@@ -206,8 +206,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     ParentFont = False
   end
   object Label1: TLabel
-    Left = 274
-    Top = 138
+    Left = 24
+    Top = 130
     Width = 94
     Height = 16
     Caption = 'Data Pagamento'
@@ -218,12 +218,38 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     Font.Style = []
     ParentFont = False
   end
-  object Label2: TLabel
-    Left = 438
-    Top = 138
-    Width = 62
+  object Label3: TLabel
+    Left = 278
+    Top = 130
+    Width = 86
     Height = 16
-    Caption = 'Valor Pago'
+    Caption = 'Valor Desconto'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 390
+    Top = 130
+    Width = 93
+    Height = 16
+    Caption = 'Valor Acr'#233'scimo'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 535
+    Top = 130
+    Width = 61
+    Height = 16
+    Caption = 'Valor Final'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -234,15 +260,14 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 525
+    Width = 616
     Height = 31
     Align = alTop
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 5
-    ExplicitTop = 1
-    ExplicitWidth = 489
+    TabOrder = 4
+    ExplicitWidth = 525
     object lblCaption: TLabel
       Left = 11
       Top = 8
@@ -258,7 +283,7 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     end
     object Image1: TImage
       AlignWithMargins = True
-      Left = 498
+      Left = 589
       Top = 3
       Width = 22
       Height = 25
@@ -353,7 +378,7 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
   object edtClienteFornecedor: TEdit
     Left = 24
     Top = 81
-    Width = 476
+    Width = 459
     Height = 24
     TabStop = False
     CharCase = ecUpperCase
@@ -368,8 +393,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     TabOrder = 0
   end
   object mkeDtVencimento: TMaskEdit
-    Left = 24
-    Top = 162
+    Left = 489
+    Top = 83
     Width = 108
     Height = 21
     TabStop = False
@@ -380,8 +405,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     Text = '  /  /    '
   end
   object edtValor: TJvValidateEdit
-    Left = 143
-    Top = 160
+    Left = 139
+    Top = 152
     Width = 108
     Height = 24
     TabStop = False
@@ -399,8 +424,8 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     TabOrder = 2
   end
   object mkeDtPagamento: TMaskEdit
-    Left = 274
-    Top = 162
+    Left = 24
+    Top = 154
     Width = 108
     Height = 21
     EditMask = '99/99/9999;1;_'
@@ -408,9 +433,73 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     TabOrder = 3
     Text = '  /  /    '
   end
-  object edtValorPago: TJvValidateEdit
-    Left = 392
-    Top = 160
+  object Panel1: TPanel
+    Left = 613
+    Top = 31
+    Width = 1
+    Height = 255
+    Align = alRight
+    BevelOuter = bvNone
+    Color = 6710886
+    ParentBackground = False
+    TabOrder = 5
+    ExplicitLeft = 522
+    ExplicitHeight = 274
+  end
+  object Panel4: TPanel
+    Left = 0
+    Top = 286
+    Width = 616
+    Height = 1
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 6710886
+    ParentBackground = False
+    TabOrder = 6
+    ExplicitTop = 305
+    ExplicitWidth = 525
+  end
+  object Panel5: TPanel
+    Left = 614
+    Top = 31
+    Width = 2
+    Height = 255
+    Align = alRight
+    BevelOuter = bvNone
+    Color = 6710886
+    ParentBackground = False
+    TabOrder = 7
+    ExplicitLeft = 523
+    ExplicitHeight = 274
+  end
+  object Panel7: TPanel
+    Left = 0
+    Top = 287
+    Width = 616
+    Height = 3
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 6710886
+    ParentBackground = False
+    TabOrder = 8
+    ExplicitTop = 306
+    ExplicitWidth = 525
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 31
+    Width = 3
+    Height = 255
+    Align = alLeft
+    BevelOuter = bvNone
+    Color = 6710886
+    ParentBackground = False
+    TabOrder = 9
+    ExplicitHeight = 274
+  end
+  object edtValorDesconto: TJvValidateEdit
+    Left = 256
+    Top = 152
     Width = 108
     Height = 24
     CriticalPoints.MaxValueIncluded = False
@@ -423,74 +512,41 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
-  end
-  object Panel1: TPanel
-    Left = 522
-    Top = 31
-    Width = 1
-    Height = 274
-    Align = alRight
-    BevelOuter = bvNone
-    Color = 6710886
-    ParentBackground = False
-    TabOrder = 6
-    ExplicitLeft = 524
-    ExplicitTop = -8
-    ExplicitHeight = 317
-  end
-  object Panel4: TPanel
-    Left = 0
-    Top = 305
-    Width = 525
-    Height = 1
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = 6710886
-    ParentBackground = False
-    TabOrder = 7
-    ExplicitLeft = -93
-    ExplicitTop = 308
-    ExplicitWidth = 618
-  end
-  object Panel5: TPanel
-    Left = 523
-    Top = 31
-    Width = 2
-    Height = 274
-    Align = alRight
-    BevelOuter = bvNone
-    Color = 6710886
-    ParentBackground = False
-    TabOrder = 8
-    ExplicitTop = -8
-    ExplicitHeight = 317
-  end
-  object Panel7: TPanel
-    Left = 0
-    Top = 306
-    Width = 525
-    Height = 3
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = 6710886
-    ParentBackground = False
-    TabOrder = 9
-    ExplicitLeft = -93
-    ExplicitWidth = 618
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 31
-    Width = 3
-    Height = 274
-    Align = alLeft
-    BevelOuter = bvNone
-    Color = 6710886
-    ParentBackground = False
     TabOrder = 10
-    ExplicitTop = -209
-    ExplicitHeight = 518
+  end
+  object edtValorAcrescimo: TJvValidateEdit
+    Left = 375
+    Top = 152
+    Width = 108
+    Height = 24
+    CriticalPoints.MaxValueIncluded = False
+    CriticalPoints.MinValueIncluded = False
+    DisplayFormat = dfFloat
+    DecimalPlaces = 2
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 11
+  end
+  object edtValorPago: TJvValidateEdit
+    Left = 489
+    Top = 152
+    Width = 108
+    Height = 24
+    CriticalPoints.MaxValueIncluded = False
+    CriticalPoints.MinValueIncluded = False
+    DisplayFormat = dfFloat
+    DecimalPlaces = 2
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 12
   end
   object qryAUX: TFDQuery
     Connection = frmPrincipal.ConexaoLocal
@@ -505,7 +561,7 @@ object frmLiquidarTitulos: TfrmLiquidarTitulos
       
         '  from lancamentos_financeiros lf inner join contas_financeiras ' +
         'cf on lf.id_conta_financeira = cf.id')
-    Left = 480
-    Top = 176
+    Left = 656
+    Top = 296
   end
 end

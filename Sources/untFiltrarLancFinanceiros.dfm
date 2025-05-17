@@ -3,7 +3,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmFiltrarLancFinanceiros'
-  ClientHeight = 395
+  ClientHeight = 542
   ClientWidth = 621
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,12 +14,13 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   KeyPreview = True
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Image2: TImage
     Left = 145
-    Top = 320
+    Top = 470
     Width = 289
     Height = 39
     Picture.Data = {
@@ -153,7 +154,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   end
   object spbPesquisar: TSpeedButton
     Left = 577
-    Top = 85
+    Top = 95
     Width = 23
     Height = 24
     Flat = True
@@ -229,7 +230,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   end
   object Label1: TLabel
     Left = 21
-    Top = 235
+    Top = 328
     Width = 36
     Height = 16
     Caption = 'Status'
@@ -242,18 +243,120 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   end
   object Image3: TImage
     Left = 152
-    Top = 326
+    Top = 476
     Width = 148
     Height = 31
     OnClick = Image3Click
   end
   object Image4: TImage
     Left = 303
-    Top = 326
+    Top = 476
     Width = 131
     Height = 31
     Cursor = crHandPoint
     OnClick = Image4Click
+  end
+  object Label3: TLabel
+    Left = 21
+    Top = 394
+    Width = 29
+    Height = 16
+    Caption = 'Tipo '
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object SpeedButton1: TSpeedButton
+    Left = 237
+    Top = 164
+    Width = 23
+    Height = 24
+    Flat = True
+    Glyph.Data = {
+      36080000424D3608000000000000360000002800000020000000100000000100
+      20000000000000080000120B0000120B00000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A5A5A55C85858584DDDDDD2AFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00A5A5A55C85858584DDDDDD2AFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00BCBCBC448B88889EEADADAFFA4A4A474FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00BCBCBC448989899EE2E2E2FFA4A4A474FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00CDCDCD3385848496DDD1D1FFA7A5A590C6C6C64BFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00CDCDCD3385858596D7D7D7FFA6A6A690C6C6C64BFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00DBDB
+      DB258685858CCCC4C4FFA5A4A486D4D4D438FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00DBDB
+      DB258585858CC8C8C8FFA4A4A486D4D4D438FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00E9E9E916AAAAAA56888888797A7A7A8788888879AAAAAA56D6D6D62A8787
+      8783BCB8B8FFA6A5A57CDFDFDF2AFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00E9E9E916AAAAAA56888888797A7A7A8788888879AAAAAA56D6D6D62A8787
+      8783BABABAFFA5A5A57CDFDFDF2AFFFFFF00FFFFFF00FFFFFF00FFFFFF00D8D8
+      D82A9696967DC2C0BFA9F3EFEBC5FAF5F0D6F2EDE9C4C0BCB8A58F8E8D87AFAD
+      ADFFA7A7A773E7E7E71FFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D8D8
+      D82A9696967DC0C0C0A9EFEFEFC5F5F5F5D6EDEDEDC4BCBCBCA58E8E8E87AEAE
+      AEFFA7A7A773E7E7E71FFFFFFF00FFFFFF00FFFFFF00FFFFFF00EEEEEE14A7A6
+      A674E8E4DFB8F8F2EBD1F8F0E9CEF8F0E9CEF8F0E9CEF5EBE1CBE6DDD3BEA6A6
+      A57BE3E3E324FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00EEEEEE14A6A6
+      A674E4E4E4B8F1F1F1D1F0F0F0CEF0F0F0CEF0F0F0CEEBEBEBCBDDDDDDBEA5A5
+      A57BE3E3E324FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C4C4C449CDC8
+      C39DF8F0E8CEF8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEF7EDE6CBEFDFCEC3CBC5
+      BF97C4C4C449FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C4C4C449C8C8
+      C89DF0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEEEEEEECBDEDEDEC3C5C5
+      C597C4C4C449FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B0B0B065EEE3
+      D9B8F8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEEEDDCCC0EADE
+      D0B1B0B0B065FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B0B0B065E3E3
+      E3B8F0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEDCDCDCC0DDDD
+      DDB1B0B0B065FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00ABABAB6FF1E3
+      D5C5F8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEEEDDCCC0EEDDCCC0EFDF
+      CFBEABABAB6FFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00ABABAB6FE2E2
+      E2C5F0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEDCDCDCC0DCDCDCC0DEDE
+      DEBEABABAB6FFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B8B8B860ECE0
+      D4B2EEDDCCC0EEDDCCC0EEDDCCC0EEDDCCC0EEDDCCC0EEDDCCC0EEDDCCC0EADC
+      CEACB8B8B860FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B8B8B860E0E0
+      E0B2DCDCDCC0DCDCDCC0DCDCDCC0DCDCDCC0DCDCDCC0DCDCDCC0DCDCDCC0DCDC
+      DCACB8B8B860FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CFCFCF43D2CB
+      C491F5EADFC8F8F0E9CEF8F0E9CEF8F0E9CEF8F0E9CEF4E9DEC8EEDDCCC0D1CA
+      C28ECFCFCF43FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CFCFCF43CBCB
+      CB91EAEAEAC8F0F0F0CEF0F0F0CEF0F0F0CEF0F0F0CEE9E9E9C8DCDCDCC0CACA
+      CA8ECFCFCF43FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F3F3F311C1BF
+      BF64E7DCD1A4F8F0E8CDF8F0E9CEF8F0E9CEF8F0E8CDF0E1D2C2E4D8CCA1C0BF
+      BE64F3F3F311FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00F3F3F311BFBF
+      BF64DCDCDCA4F0F0F0CDF0F0F0CEF0F0F0CEF0F0F0CDE1E1E1C2D8D8D8A1BFBF
+      BF64F3F3F311FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E8E8
+      E821C3C2C162D6D1CB8EF2EBE4B5F6EFE6C7EEE2D7AFD4CDC58BC3C2C162E8E8
+      E821FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E8E8
+      E821C2C2C262D1D1D18EEBEBEBB5EEEEEEC7E2E2E2AFCCCCCC8BC2C2C262E8E8
+      E821FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00F4F4F411D4D4D440C3C3C35ABCBCBC65C3C3C35AD4D4D440F4F4F411FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00F4F4F411D4D4D440C3C3C35ABCBCBC65C3C3C35AD4D4D440F4F4F411FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
+    NumGlyphs = 2
+    OnClick = SpeedButton1Click
+  end
+  object Label5: TLabel
+    Left = 21
+    Top = 142
+    Width = 96
+    Height = 16
+    Caption = 'Conta Financeira'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object Panel3: TPanel
     Left = 0
@@ -264,8 +367,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 4
-    ExplicitWidth = 618
+    TabOrder = 7
     object Label2: TLabel
       Left = 11
       Top = 8
@@ -375,7 +477,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
   end
   object edtClienteFornecedor: TEdit
     Left = 21
-    Top = 83
+    Top = 95
     Width = 556
     Height = 24
     TabStop = False
@@ -388,12 +490,12 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     MaxLength = 80
     ParentFont = False
     ReadOnly = True
-    TabOrder = 2
+    TabOrder = 0
     OnKeyDown = edtClienteFornecedorKeyDown
   end
   object rdbCliente: TRadioButton
     Left = 21
-    Top = 60
+    Top = 72
     Width = 62
     Height = 17
     Caption = 'Cliente'
@@ -404,12 +506,12 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 5
     TabStop = True
   end
   object rdbFornecedor: TRadioButton
     Left = 94
-    Top = 60
+    Top = 72
     Width = 88
     Height = 17
     Caption = 'Fornecedor'
@@ -419,11 +521,11 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 6
   end
   object cbbStatus: TComboBox
     Left = 21
-    Top = 257
+    Top = 350
     Width = 239
     Height = 24
     Style = csOwnerDrawFixed
@@ -439,96 +541,93 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     Text = 'TODOS'
     Items.Strings = (
       'TODOS'
-      'ABERTO'
+      'A VENCER'
       'ATRASO'
       'PAGO'
-      'CANCELADO')
+      'CANCELADO'
+      'A VENCER + ATRASO')
   end
   object Panel1: TPanel
     Left = 620
     Top = 31
     Width = 1
-    Height = 360
+    Height = 507
     Align = alRight
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 5
-    ExplicitLeft = 617
-    ExplicitHeight = 317
+    TabOrder = 8
+    ExplicitHeight = 360
   end
   object Panel2: TPanel
     Left = 0
     Top = 31
     Width = 1
-    Height = 360
+    Height = 507
     Align = alLeft
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 6
-    ExplicitHeight = 317
+    TabOrder = 9
+    ExplicitHeight = 360
   end
   object Panel4: TPanel
     Left = 0
-    Top = 394
+    Top = 541
     Width = 621
     Height = 1
     Align = alBottom
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 7
-    ExplicitTop = 351
-    ExplicitWidth = 618
+    TabOrder = 10
+    ExplicitTop = 394
   end
   object Panel5: TPanel
     Left = 618
     Top = 31
     Width = 2
-    Height = 360
+    Height = 507
     Align = alRight
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 8
-    ExplicitLeft = 615
-    ExplicitHeight = 317
+    TabOrder = 11
+    ExplicitHeight = 360
   end
   object Panel6: TPanel
     Left = 1
     Top = 31
     Width = 3
-    Height = 360
+    Height = 507
     Align = alLeft
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 9
-    ExplicitHeight = 317
+    TabOrder = 12
+    ExplicitHeight = 360
   end
   object Panel7: TPanel
     Left = 0
-    Top = 391
+    Top = 538
     Width = 621
     Height = 3
     Align = alBottom
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 10
-    ExplicitTop = 348
-    ExplicitWidth = 618
+    TabOrder = 13
+    ExplicitTop = 391
   end
   object GroupBox1: TGroupBox
     Left = 21
-    Top = 125
-    Width = 579
+    Top = 218
+    Width = 239
     Height = 95
     Caption = 'Per'#237'odo'
-    TabOrder = 11
+    TabOrder = 2
     object Label4: TLabel
-      Left = 128
+      Left = 106
       Top = 57
       Width = 7
       Height = 16
@@ -553,7 +652,7 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
     object mkeDtIni: TMaskEdit
       Left = 13
       Top = 55
-      Width = 104
+      Width = 88
       Height = 21
       EditMask = '99/99/9999;1;_'
       MaxLength = 10
@@ -561,9 +660,9 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
       Text = '  /  /    '
     end
     object mkeDtFim: TMaskEdit
-      Left = 145
+      Left = 121
       Top = 55
-      Width = 108
+      Width = 88
       Height = 21
       EditMask = '99/99/9999;1;_'
       MaxLength = 10
@@ -579,6 +678,46 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
       TabOrder = 3
     end
   end
+  object cbbTipo: TComboBox
+    Left = 21
+    Top = 416
+    Width = 239
+    Height = 24
+    Style = csOwnerDrawFixed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ItemHeight = 18
+    ItemIndex = 0
+    ParentFont = False
+    TabOrder = 4
+    Text = 'TODOS'
+    Items.Strings = (
+      'TODOS'
+      'RECEITA'
+      'DESPESA')
+  end
+  object edtContaFinanceira: TEdit
+    Left = 21
+    Top = 164
+    Width = 213
+    Height = 24
+    TabStop = False
+    CharCase = ecUpperCase
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    MaxLength = 80
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 1
+    Text = 'TODAS'
+    OnKeyDown = edtContaFinanceiraKeyDown
+  end
   object qryAUX: TFDQuery
     Connection = frmPrincipal.ConexaoLocal
     UpdateOptions.AssignedValues = [uvUpdateMode]
@@ -593,6 +732,6 @@ object frmFiltrarLancFinanceiros: TfrmFiltrarLancFinanceiros
         '  from lancamentos_financeiros lf inner join contas_financeiras ' +
         'cf on lf.id_conta_financeira = cf.id')
     Left = 328
-    Top = 222
+    Top = 315
   end
 end

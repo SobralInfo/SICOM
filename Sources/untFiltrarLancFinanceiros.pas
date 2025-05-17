@@ -37,6 +37,11 @@ type
     mkeDtFim: TMaskEdit;
     Label4: TLabel;
     rdbVencimento: TRadioButton;
+    Label3: TLabel;
+    cbbTipo: TComboBox;
+    SpeedButton1: TSpeedButton;
+    edtContaFinanceira: TEdit;
+    Label5: TLabel;
     procedure Image1Click(Sender: TObject);
     procedure Image4Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
@@ -44,11 +49,15 @@ type
     procedure spbPesquisarClick(Sender: TObject);
     procedure edtClienteFornecedorKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure edtContaFinanceiraKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    idClienteFornecedor: integer;
+    idClienteFornecedor, idContaFinanceira: integer;
     receita, despesa, saldo: double;
     procedure Confirmar;
   end;
@@ -61,7 +70,7 @@ implementation
 {$R *.dfm}
 
 uses untConsultarLancFinanceiros, untPesquisarClientes,
-  untPesquisarFornecedores;
+  untPesquisarFornecedores, untPesquisarContasFinanceiras;
 
 procedure TfrmFiltrarLancFinanceiros.Confirmar;
 begin
@@ -89,13 +98,15 @@ begin
    frmConsultarLancFinanceiros.qryListagem.SQL.Add('  where 1 = 1 ');
 
    if cbbStatus.ItemIndex > 0 then
-      begin
+     begin
        if rdbVencimento.Checked then begin
          case cbbStatus.ItemIndex of
             1: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and ((lf.status = ''A'') and (data_vencimento >= :dtVenc)) ');
             2: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and ((lf.status = ''A'') and (data_vencimento < :dtVenc)) ');
             3: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.status = ''P'' ');
             4: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.status = ''C'' ');
+            5: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and (((lf.status = ''A'') and (DATA_ENTRADA >= :DATA_ENTRADA)) or ' +
+                                                                   '  ((lf.status = ''A'') and (DATA_ENTRADA < :DATA_ENTRADA))) ');
          end;
          if cbbStatus.ItemIndex <= 2 then
             frmConsultarLancFinanceiros.qryListagem.Params.ParamByName('dtVenc').AsDate := date;
@@ -105,11 +116,24 @@ begin
             2: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and ((lf.status = ''A'') and (DATA_ENTRADA < :DATA_ENTRADA)) ');
             3: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.status = ''P'' ');
             4: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.status = ''C'' ');
+            5: frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and (((lf.status = ''A'') and (DATA_ENTRADA >= :DATA_ENTRADA)) or ' +
+                                                                   '  ((lf.status = ''A'') and (DATA_ENTRADA < :DATA_ENTRADA))) ');
          end;
-         if cbbStatus.ItemIndex <= 2 then
+         if ((cbbStatus.ItemIndex <= 2) or (cbbStatus.ItemIndex = 5)) then
             frmConsultarLancFinanceiros.qryListagem.Params.ParamByName('DATA_ENTRADA').AsDate := date;
        end;
-      end;
+     end;
+
+   if cbbTipo.ItemIndex > 0 then
+      frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.tipo_lancamento = ' + QuotedStr(copy(cbbTipo.Text,1,1)) );
+
+   if rdbVencimento.Checked then
+      frmConsultarLancFinanceiros.tipoData := 'V'
+   else
+      frmConsultarLancFinanceiros.tipoData := 'E';
+
+   if idContaFinanceira > 0 then
+      frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.id_conta_financeira = ' + idcontafinanceira.ToString );
 
    if idClienteFornecedor > 0 then
       begin
@@ -120,11 +144,13 @@ begin
       end;
 
    if rdbVencimento.Checked then begin
+      frmConsultarLancFinanceiros.lblTipoData.Caption := 'Data Vencimento:';
       frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.data_vencimento between :dtIni and :dtFim ');
       frmConsultarLancFinanceiros.qryListagem.SQL.Add(' order by data_vencimento ');
    end
    else
    begin
+      frmConsultarLancFinanceiros.lblTipoData.Caption := 'Data de Entrada:';
       frmConsultarLancFinanceiros.qryListagem.SQL.Add(' and lf.DATA_ENTRADA between :dtIni and :dtFim ');
       frmConsultarLancFinanceiros.qryListagem.SQL.Add(' order by DATA_ENTRADA ');
    end;
@@ -160,11 +186,19 @@ begin
    frmConsultarLancFinanceiros.lblFiltrosPeriodo.Caption := mkeDtIni.Text + ' à ' + mkeDtFim.Text;
    frmConsultarLancFinanceiros.lblStatus.caption := trim(cbbStatus.Text);
    frmConsultarLancFinanceiros.idStatus := cbbStatus.ItemIndex;
+   frmConsultarLancFinanceiros.idTipo := cbbTipo.ItemIndex;
+   frmConsultarLancFinanceiros.lblTipo.Caption := Trim(cbbTipo.Text);
+   frmConsultarLancFinanceiros.idcontafinanceira := idContaFinanceira;
+   frmConsultarLancFinanceiros.lblConta.Caption := trim(edtContaFinanceira.Text);
 
    if rdbCliente.Checked then
-      frmConsultarLancFinanceiros.tipoClienteFornecedor := 'C'
+      begin
+         frmConsultarLancFinanceiros.tipoClienteFornecedor := 'C';
+      end
    else
-      frmConsultarLancFinanceiros.tipoClienteFornecedor := 'F';
+      begin
+         frmConsultarLancFinanceiros.tipoClienteFornecedor := 'F';
+      end;
 
    close;
 end;
@@ -177,6 +211,22 @@ begin
         idClienteFornecedor := 0;
         edtClienteFornecedor.Text := 'TODOS';
       end;
+end;
+
+procedure TfrmFiltrarLancFinanceiros.edtContaFinanceiraKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+   if key = VK_DELETE then
+      begin
+        idContaFinanceira := 0;
+        edtContaFinanceira.Text := 'TODAS';
+      end;
+end;
+
+procedure TfrmFiltrarLancFinanceiros.FormCreate(Sender: TObject);
+begin
+   idContaFinanceira := 0;
+   idClienteFornecedor := 0;
 end;
 
 procedure TfrmFiltrarLancFinanceiros.FormKeyDown(Sender: TObject; var Key: Word;
@@ -217,6 +267,15 @@ begin
          frmPesquisarFornecedores.origem := 'FILTRO_LANC_FINANCEIRO';
          frmPesquisarFornecedores.ShowModal;
       end;
+end;
+
+procedure TfrmFiltrarLancFinanceiros.SpeedButton1Click(Sender: TObject);
+begin
+   Application.CreateForm(TfrmPesquisarContasFinanceiras, frmPesquisarContasFinanceiras);
+   frmPesquisarContasFinanceiras.qryContasFinanceiras.Close;
+   frmPesquisarContasFinanceiras.qryContasFinanceiras.Open;
+   frmPesquisarContasFinanceiras.origem := 'LANC_FINANCEIRO';
+   frmPesquisarContasFinanceiras.showmodal;
 end;
 
 end.

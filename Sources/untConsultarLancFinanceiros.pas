@@ -42,7 +42,7 @@ type
     GroupBox1: TGroupBox;
     Label1: TLabel;
     Label3: TLabel;
-    Label5: TLabel;
+    lblTipoData: TLabel;
     lblFiltroClienteFornecedor: TLabel;
     lblFiltrosPeriodo: TLabel;
     Label13: TLabel;
@@ -90,6 +90,13 @@ type
     Label23: TLabel;
     Label25: TLabel;
     DBText6: TDBText;
+    Label26: TLabel;
+    lblConta: TLabel;
+    lblTipo: TLabel;
+    Label29: TLabel;
+    Label5: TLabel;
+    Label27: TLabel;
+    DBText7: TDBText;
     procedure NovoLa1Click(Sender: TObject);
     procedure EditarLanamento1Click(Sender: TObject);
     procedure FiltrarConsulta1Click(Sender: TObject);
@@ -107,8 +114,8 @@ type
   public
     { Public declarations }
     dtFiltroIni, dtFiltroFim: TDate;
-    idClienteFornecedor, idStatus: integer;
-    tipoClienteFornecedor: string;
+    idClienteFornecedor, idStatus, idContaFinanceira, idTipo: integer;
+    tipoClienteFornecedor, tipoData: string;
   end;
 
 var
@@ -196,6 +203,7 @@ begin
    frmLancamentoFinanceiro.edtValor.AsFloat := qryListagemVALOR_DOCUMENTO.AsFloat;
    frmLancamentoFinanceiro.mmoObservacoes.Lines.Text := trim(qryListagemOBSERVACOES.AsString);
    frmLancamentoFinanceiro.edtParcela.Text := trim(qryListagemPARCELA.AsString);
+   frmLancamentoFinanceiro.lkpFormaPagto.KeyValue := qryListagemID_FORMA_PAGTO.AsInteger;
    frmLancamentoFinanceiro.ShowModal;
 end;
 
@@ -215,6 +223,17 @@ begin
 
    frmFiltrarLancFinanceiros.cbbStatus.ItemIndex := idStatus;
 
+   frmFiltrarLancFinanceiros.idContaFinanceira := idContaFinanceira;
+   frmFiltrarLancFinanceiros.edtContaFinanceira.Text := lblConta.Caption;
+
+   frmFiltrarLancFinanceiros.cbbTipo.ItemIndex := idtipo;
+
+   if TipoData = 'V' then
+      frmFiltrarLancFinanceiros.rdbVencimento.Checked := true
+   else
+      frmFiltrarLancFinanceiros.rdbEntrada.Checked := true;
+
+
    frmFiltrarLancFinanceiros.ShowModal;
 end;
 
@@ -223,8 +242,11 @@ begin
    dtFiltroIni := date;
    dtFiltroFim := date;
    tipoClienteFornecedor := 'C';
+   tipoData := 'E';
    idClienteFornecedor := 0;
    idStatus := 0;
+   idTipo := 0;
+   idContaFinanceira := 0;
    lblFiltrosPeriodo.Caption := DateToStr(date) + ' à ' + DateToStr(date);
    qryListagem.Close;
    qryListagem.Open;
@@ -379,7 +401,7 @@ begin
   else if qryListagemSTATUS.AsString = 'C' then
    qryListagemcalcStatus.AsString := 'CANCELADO'
   else
-   qryListagemcalcStatus.AsString := 'ABERTO';
+   qryListagemcalcStatus.AsString := 'À VENCER';
 end;
 
 end.

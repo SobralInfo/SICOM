@@ -2335,10 +2335,9 @@ object frmPrincipal: TfrmPrincipal
     Params.Strings = (
       'User_Name=sysdba'
       'Password=masterkey'
-      
-        'Database=C:\Users\Dennis Sobral\OneDrive\Pedido (OnLine)\DB\PEDI' +
-        'DO.FDB'
+      'Database=C:\Users\Dennis Sobral\OneDrive\SICOM\DB\PEDIDO.FDB'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 672
     Top = 208

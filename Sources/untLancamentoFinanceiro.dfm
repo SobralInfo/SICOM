@@ -3,7 +3,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   Top = 0
   BorderStyle = bsNone
   Caption = 'frmLancamentoFinanceiro'
-  ClientHeight = 620
+  ClientHeight = 708
   ClientWidth = 617
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -250,9 +250,9 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   object Label4: TLabel
     Left = 21
     Top = 104
-    Width = 109
+    Width = 96
     Height = 16
-    Caption = 'Cliente/Fornecedor'
+    Caption = 'Conta Financeira'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -262,7 +262,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object Label2: TLabel
     Left = 20
-    Top = 236
+    Top = 310
     Width = 82
     Height = 16
     Caption = 'N'#186' Documento'
@@ -275,7 +275,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object Label5: TLabel
     Left = 21
-    Top = 299
+    Top = 375
     Width = 97
     Height = 16
     Caption = 'Data Vencimento'
@@ -288,7 +288,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object Label6: TLabel
     Left = 20
-    Top = 363
+    Top = 439
     Width = 98
     Height = 16
     Caption = 'Valor Documento'
@@ -301,7 +301,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object Label7: TLabel
     Left = 21
-    Top = 493
+    Top = 569
     Width = 73
     Height = 16
     Caption = 'Observa'#231#245'es'
@@ -314,7 +314,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object spbPesquisar: TSpeedButton
     Left = 577
-    Top = 193
+    Top = 268
     Width = 23
     Height = 24
     Flat = True
@@ -390,12 +390,25 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object Label1: TLabel
     Left = 21
-    Top = 428
+    Top = 504
     Width = 42
     Height = 16
     Caption = 'Parcela'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 21
+    Top = 171
+    Width = 123
+    Height = 16
+    Caption = 'Forma de Pagamento'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Tahoma'
     Font.Style = []
@@ -410,7 +423,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 7
+    TabOrder = 8
     object Label3: TLabel
       Left = 20
       Top = 8
@@ -540,7 +553,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   end
   object edtDocumento: TEdit
     Left = 20
-    Top = 258
+    Top = 332
     Width = 168
     Height = 24
     CharCase = ecUpperCase
@@ -552,30 +565,30 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     Font.Style = []
     MaxLength = 80
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 3
   end
   object mkeVencimento: TMaskEdit
     Left = 21
-    Top = 320
+    Top = 396
     Width = 108
     Height = 21
     Enabled = False
     EditMask = '99/99/9999;1;_'
     MaxLength = 10
-    TabOrder = 3
+    TabOrder = 4
     Text = '  /  /    '
   end
   object mmoObservacoes: TMemo
     Left = 21
-    Top = 515
+    Top = 591
     Width = 556
     Height = 74
     Enabled = False
-    TabOrder = 6
+    TabOrder = 7
   end
   object edtClienteFornecedor: TEdit
     Left = 21
-    Top = 193
+    Top = 268
     Width = 556
     Height = 24
     TabStop = False
@@ -589,11 +602,11 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     MaxLength = 80
     ParentFont = False
     ReadOnly = True
-    TabOrder = 1
+    TabOrder = 2
   end
   object rdbCliente: TRadioButton
     Left = 21
-    Top = 170
+    Top = 245
     Width = 62
     Height = 17
     Caption = 'Cliente'
@@ -605,12 +618,12 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 8
+    TabOrder = 9
     TabStop = True
   end
   object rdbFornecedor: TRadioButton
     Left = 94
-    Top = 170
+    Top = 245
     Width = 88
     Height = 17
     Caption = 'Fornecedor'
@@ -621,11 +634,11 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 9
+    TabOrder = 10
   end
   object edtValor: TJvValidateEdit
     Left = 21
-    Top = 385
+    Top = 461
     Width = 108
     Height = 24
     CriticalPoints.MaxValueIncluded = False
@@ -639,44 +652,48 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object Panel1: TPanel
     Left = 614
     Top = 31
     Width = 3
-    Height = 586
+    Height = 674
     Align = alRight
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 10
+    TabOrder = 11
+    ExplicitHeight = 586
   end
   object Panel2: TPanel
     Left = 0
     Top = 31
     Width = 3
-    Height = 586
+    Height = 674
     Align = alLeft
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 11
+    TabOrder = 12
+    ExplicitTop = 32
+    ExplicitHeight = 646
   end
   object Panel4: TPanel
     Left = 0
-    Top = 617
+    Top = 705
     Width = 617
     Height = 3
     Align = alBottom
     BevelOuter = bvNone
     Color = 6710886
     ParentBackground = False
-    TabOrder = 12
+    TabOrder = 13
+    ExplicitTop = 617
   end
   object edtParcela: TEdit
     Left = 21
-    Top = 450
+    Top = 526
     Width = 108
     Height = 24
     CharCase = ecUpperCase
@@ -688,7 +705,24 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
     Font.Style = []
     MaxLength = 10
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 6
+  end
+  object lkpFormaPagto: TDBLookupComboBox
+    Left = 21
+    Top = 193
+    Width = 316
+    Height = 24
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    KeyField = 'ID'
+    ListField = 'NOME'
+    ListSource = dtsFormaPagto
+    ParentFont = False
+    TabOrder = 1
   end
   object qryContas: TFDQuery
     Connection = frmPrincipal.ConexaoLocal
@@ -699,7 +733,7 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
         'Select id,tipo, descricao from contas_financeiras where status =' +
         ' '#39'A'#39' order by descricao')
     Left = 344
-    Top = 288
+    Top = 364
     object qryContasID: TIntegerField
       FieldName = 'ID'
       Origin = 'ID'
@@ -720,16 +754,43 @@ object frmLancamentoFinanceiro: TfrmLancamentoFinanceiro
   object dtsContas: TDataSource
     DataSet = qryContas
     Left = 392
-    Top = 288
+    Top = 364
   end
   object qryAUX: TFDQuery
     Connection = frmPrincipal.ConexaoLocal
-    Left = 344
-    Top = 231
+    Left = 456
+    Top = 365
   end
   object qryDAO: TFDQuery
     Connection = frmPrincipal.ConexaoLocal
-    Left = 400
-    Top = 231
+    Left = 512
+    Top = 365
+  end
+  object qryFormaPagto: TFDQuery
+    Connection = frmPrincipal.ConexaoLocal
+    UpdateOptions.AssignedValues = [uvUpdateMode]
+    UpdateOptions.UpdateMode = upWhereAll
+    SQL.Strings = (
+      
+        'select id, nome from formas_pagamento where status = '#39'A'#39' order b' +
+        'y nome')
+    Left = 344
+    Top = 436
+    object qryFormaPagtoID: TIntegerField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryFormaPagtoNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Size = 120
+    end
+  end
+  object dtsFormaPagto: TDataSource
+    DataSet = qryFormaPagto
+    Left = 424
+    Top = 444
   end
 end

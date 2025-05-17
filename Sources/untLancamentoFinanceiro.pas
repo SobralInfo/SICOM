@@ -45,6 +45,12 @@ type
     Panel4: TPanel;
     Label1: TLabel;
     edtParcela: TEdit;
+    Label8: TLabel;
+    lkpFormaPagto: TDBLookupComboBox;
+    qryFormaPagto: TFDQuery;
+    dtsFormaPagto: TDataSource;
+    qryFormaPagtoID: TIntegerField;
+    qryFormaPagtoNOME: TStringField;
     procedure Image1Click(Sender: TObject);
     procedure speNovoClick(Sender: TObject);
     procedure speCancelarClick(Sender: TObject);
@@ -63,6 +69,7 @@ type
     procedure HabilitarDesabilitarBotoes(tipo: string);
     procedure HabilitarDesabilitarCampos(tipo: string);
     procedure LimparCampos;
+    procedure atualizarSoma;
   end;
 
 var
@@ -74,6 +81,31 @@ implementation
 
 uses untPesquisarClientes, untPesquisarFornecedores,
   untConsultarLancFinanceiros;
+
+procedure TfrmLancamentoFinanceiro.atualizarSoma;
+var receita, despesa, saldo: double;
+begin
+   receita := 0.00;
+   despesa := 0.00;
+
+   frmConsultarLancFinanceiros.qryListagem.First;
+
+   while not frmConsultarLancFinanceiros.qryListagem.Eof do begin
+      if frmConsultarLancFinanceiros.qryListagemTIPO_LANCAMENTO.AsString = 'R' then
+         receita := receita + frmConsultarLancFinanceiros.qryListagemVALOR_DOCUMENTO.AsFloat
+      else
+         despesa := despesa + frmConsultarLancFinanceiros.qryListagemVALOR_DOCUMENTO.AsFloat;
+      frmConsultarLancFinanceiros.qryListagem.Next;
+   end;
+
+   frmConsultarLancFinanceiros.qryListagem.First;
+
+   saldo := receita - despesa;
+
+   frmConsultarLancFinanceiros.lblTotalReceitas.Caption := FormatFloat('###,#0.00', receita);
+   frmConsultarLancFinanceiros.lblTotalDespesas.Caption := FormatFloat('###,#0.00', despesa);
+   frmConsultarLancFinanceiros.lblSaldo.Caption := FormatFloat('###,#0.00', saldo);
+end;
 
 procedure TfrmLancamentoFinanceiro.Cancelar;
 begin
@@ -146,6 +178,7 @@ begin
          edtValor.Enabled := true;
          mmoObservacoes.Enabled := true;
          edtParcela.Enabled := true;
+         lkpFormaPagto.Enabled := true;
       end
    else
       begin
@@ -158,6 +191,7 @@ begin
          edtValor.Enabled := false;
          mmoObservacoes.Enabled := false;
          edtParcela.Enabled := false;
+         lkpFormaPagto.Enabled := false;
       end;
 end;
 
@@ -169,6 +203,7 @@ end;
 procedure TfrmLancamentoFinanceiro.LimparCampos;
 begin
    lkpContaFinanceira.KeyValue := -1;
+   lkpFormaPagto.KeyValue := -1;
    rdbCliente.Checked := true;
    edtClienteFornecedor.Text := '';
    edtDocumento.Text := '';
@@ -188,6 +223,9 @@ begin
    qryContas.Close;
    qryContas.Open;
 
+   qryFormaPagto.Close;
+   qryFormaPagto.Open;
+
    try
       lkpContaFinanceira.SetFocus;
    except
@@ -197,6 +235,13 @@ end;
 
 procedure TfrmLancamentoFinanceiro.Salvar;
 begin
+
+   if Trim(lkpFormaPagto.Text) = '' then
+      begin
+         prcMsgAdv('Selecione a forma de pagamento.');
+         lkpFormaPagto.SetFocus;
+         exit;
+      end;
 
    if Trim(lkpContaFinanceira.Text) = '' then
       begin
@@ -235,13 +280,13 @@ begin
          qryDAO.SQL.Add(' (  ');
          qryDAO.SQL.Add(' id_conta_financeira, id_cliente_fornecedor, descricao_cliente_fornecedor, ');
          qryDAO.SQL.Add(' tipo_cliente_fornecedor, descricao_documento, data_vencimento, data_entrada, ');
-         qryDAO.SQL.Add(' valor_documento, observacoes, status, parcela, tipo_lancamento ');
+         qryDAO.SQL.Add(' valor_documento, observacoes, status, parcela, tipo_lancamento, ID_FORMA_PAGTO ');
          qryDAO.SQL.Add(' )    ');
          qryDAO.SQL.Add(' VALUES   ');
          qryDAO.SQL.Add(' (    ');
          qryDAO.SQL.Add(' :id_conta_financeira, :id_cliente_fornecedor, :descricao_cliente_fornecedor, ');
          qryDAO.SQL.Add(' :tipo_cliente_fornecedor, :descricao_documento, :data_vencimento, :data_entrada, ');
-         qryDAO.SQL.Add(' :valor_documento, :observacoes, ''A'', :parcela, :tipo_lancamento ');
+         qryDAO.SQL.Add(' :valor_documento, :observacoes, ''A'', :parcela, :tipo_lancamento, :ID_FORMA_PAGTO ');
          qryDAO.SQL.Add(' )  ');
          qryDAO.Params.ParamByName('data_entrada').AsDateTime := date;
       End
@@ -258,12 +303,14 @@ begin
          qryDAO.SQL.Add('                                    valor_documento = :valor_documento, ');
          qryDAO.SQL.Add('                                    observacoes = :observacoes, ');
          qryDAO.SQL.Add('                                    tipo_lancamento = :tipo_lancamento, ');
-         qryDAO.SQL.Add('                                    parcela = :parcela ');
+         qryDAO.SQL.Add('                                    parcela = :parcela, ');
+         qryDAO.SQL.Add('                                    ID_FORMA_PAGTO = :ID_FORMA_PAGTO ');
          qryDAO.SQL.Add('  Where id = :id ');
          qryDAO.Params.ParamByName('id').Asinteger := idLancamento;
       end;
 
    qryDAO.Params.ParamByName('id_conta_financeira').AsInteger := lkpContaFinanceira.KeyValue;
+   qryDAO.Params.ParamByName('ID_FORMA_PAGTO').AsInteger := lkpFormaPagto.KeyValue;
    qryDAO.Params.ParamByName('id_cliente_fornecedor').AsInteger := idClienteFornecedor;
    qryDAO.Params.ParamByName('descricao_cliente_fornecedor').AsString := Trim(edtClienteFornecedor.Text);
    if rdbCliente.Checked then
@@ -275,11 +322,17 @@ begin
    qryDAO.Params.ParamByName('valor_documento').AsFloat := edtValor.AsFloat;
    qryDAO.Params.ParamByName('observacoes').AsString := Trim(mmoObservacoes.Lines.Text);
    qryDAO.Params.ParamByName('parcela').AsString := Trim(edtParcela.Text);
-   qryDAO.Params.ParamByName('tipo_lancamento').AsString := Trim(qryContasTIPO.AsString);
+
+   if qryContasTIPO.AsString = 'C' then
+      qryDAO.Params.ParamByName('tipo_lancamento').AsString := 'R'
+   else
+      qryDAO.Params.ParamByName('tipo_lancamento').AsString := 'D';
+
    Try
       qryDAO.ExecSQL;;
       prcMsgInf('Registro atualizado com sucesso.');
       frmConsultarLancFinanceiros.qryListagem.Refresh;
+      atualizarSoma;
       Cancelar;
    Except
       on e:exception do begin
