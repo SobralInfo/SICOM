@@ -2337,7 +2337,6 @@ object frmPrincipal: TfrmPrincipal
       'Password=masterkey'
       'Database=C:\Users\Dennis Sobral\OneDrive\SICOM\DB\PEDIDO.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 672
     Top = 208
