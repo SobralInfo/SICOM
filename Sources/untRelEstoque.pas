@@ -85,6 +85,7 @@ type
     RLPDFFilter1: TRLPDFFilter;
     RLDBResult2: TRLDBResult;
     RLDBResult3: TRLDBResult;
+    RLDBResult4: TRLDBResult;
     procedure Image1Click(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Image3Click(Sender: TObject);

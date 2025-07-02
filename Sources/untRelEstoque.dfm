@@ -278,7 +278,6 @@ object frmRelEstoque: TfrmRelEstoque
     Color = 6710886
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 378
     object Label2: TLabel
       Left = 20
       Top = 8
@@ -463,15 +462,15 @@ object frmRelEstoque: TfrmRelEstoque
     TabOrder = 9
   end
   object Panel1: TPanel
-    Left = -512
-    Top = 388
+    Left = 41
+    Top = 57
     Width = 836
     Height = 287
     TabOrder = 2
     Visible = False
     object RLReport1: TRLReport
-      Left = 13
-      Top = 12
+      Left = -166
+      Top = 14
       Width = 794
       Height = 1123
       DataSource = dtsRel
@@ -817,7 +816,7 @@ object frmRelEstoque: TfrmRelEstoque
         object RLDBResult1: TRLDBResult
           Left = 8
           Top = 6
-          Width = 345
+          Width = 265
           Height = 15
           DataField = 'DESCRICAO'
           DataSource = dtsRel
@@ -854,6 +853,23 @@ object frmRelEstoque: TfrmRelEstoque
           Height = 15
           Alignment = taRightJustify
           DataField = 'VALOR_UNITARIO'
+          DataSource = dtsRel
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Info = riSum
+          ParentFont = False
+          Text = ''
+        end
+        object RLDBResult4: TRLDBResult
+          Left = 264
+          Top = 6
+          Width = 133
+          Height = 15
+          Alignment = taRightJustify
+          DataField = 'QTDE_ESTOQUE'
           DataSource = dtsRel
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
